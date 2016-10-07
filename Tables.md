@@ -2,6 +2,10 @@
 
 ---
 
+**No Business Requirements**
+
+---
+
 
 
 **User Requirements**
