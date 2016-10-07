@@ -10,12 +10,12 @@
 
 **User Requirements**
 
-|   ID   | Requirement  | Topic Area | Priority  |
-|:---:|---|---|---|
-| US-001 | I want to be able to review  my processes visually | Visualization   | Critical  |
-| US-002 | I want to be able to manage my processes by interacting with the visualization | Process Management | High      |
-| US-003 | I want to see a history of my usage | Recording   | Medium    |
-| US-004 | I want to be able to sort my processes by different metrics   | Visualization  | Medium    |
+| ID | Requirement  | Topic Area | Priority  |
+| :---: | --- | --- | --- |
+| US-01 | I want to be able to review  my processes visually | Visualization | Critical  |
+| US-02 | I want to be able to manage my processes by interacting with the visualization | Process Management | High |
+| US-03 | I want to see a history of my usage | Recording | Medium |
+| US-04 | I want to be able to sort my processes by different metrics | Visualization | Medium |
 
 
 **Functional Requirements**
@@ -37,8 +37,8 @@
 
 |   ID   | Requirement                                                       | Topic Area    | Priority |
 |:------:|-------------------------------------------------------------------|---------------|----------|
-| NF-001 | I want the visualization to be sleek and intuitive                | Visualization | Low      |
-| NF-002 | I want to be the only one that can access my data                 | Security      | Medium   |
-| NF-004 | I want the color and locality of process nodes to be descriptive  | Visualization | Medium   |
-| NF-005 | I want my data to be updated in reasonable time                   | Performance   | Low      |
+| NF-01 | I want the visualization to be sleek and intuitive                | Visualization | Low      |
+| NF-02 | I want to be the only one that can access my data                 | Security      | Medium   |
+| NF-04 | I want the color and locality of process nodes to be descriptive  | Visualization | Medium   |
+| NF-05 | I want my data to be updated in reasonable time                   | Performance   | Low      |
 
