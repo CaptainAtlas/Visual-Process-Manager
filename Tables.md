@@ -4,7 +4,7 @@
 
 
 
-*User Requirements*
+**User Requirements**
 
 |   ID   | Requirement                                                                    | Topic Area         | Priority  |
 |:------:|--------------------------------------------------------------------------------|--------------------|-----------|
@@ -14,7 +14,7 @@
 | US-004 | I want to be able to sort my processes by different metrics                    | Visualization      | Medium    |
 
 
-*Functional Requirements*
+**Functional Requirements**
 
 | ID | Requirement | Topic Area | Priority |
 | :---: | --- | --- | --- |
