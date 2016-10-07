@@ -29,7 +29,7 @@
 | FR-05 | Processes can be sorted by category/metric | Management | Medium |
 | FR-06 | Process data can be stored in a database | Recording | Medium |
 | FR-07 | Database data can be shown over time | Visualization | Medium |
-| FR-08 | I don't want to be able to close the program with the program    | Management | Low      |
+| FR-08 | I don't want to be able to kill the program with the program    | Management | Low      |
 
 
 
