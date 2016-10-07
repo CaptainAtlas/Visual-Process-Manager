@@ -2,7 +2,18 @@
 
 ---
 
-Functional Requirements
+
+
+*User Requirements*
+|   ID   | Requirement                                                                    | Topic Area         | Priority  |
+|:------:|--------------------------------------------------------------------------------|--------------------|-----------|
+| US-001 | I want to be able to review  my processes visually                             | Visualization      | Critical  |
+| US-002 | I want to be able to manage my processes by interacting with the visualization | Process Management | High      |
+| US-003 | I want to see a history of my usage                                            | Recording          | Medium    |
+| US-004 | I want to be able to sort my processes by different metrics                    | Visualization      | Medium    |
+
+
+*Functional Requirements*
 
 | ID | Requirement | Topic Area | Priority |
 | :---: | --- | --- | --- |
