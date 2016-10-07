@@ -42,17 +42,19 @@
 | NF-04 | I want the color and locality of process nodes to be descriptive  | Visualization | Medium   |
 | NF-05 | I want my data to be updated in reasonable time                   | Performance   | Low      |
 
+---
+
 Use cases
 
-Visualize Running PIDs
-Kill Process
-Interrupt Process
-Switch to Foreground/BG
-Sort By CPU 
-Sort By RAM
-Sort By Disk Usage
-Sort By Network Activity
-View process history
+- Visualize Running PIDs
+- Kill Process
+- Interrupt Process
+- Switch to Foreground/BG
+- Sort By CPU 
+- Sort By RAM
+- Sort By Disk Usage
+- Sort By Network Activity
+- View process history
 
 
 
