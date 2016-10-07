@@ -46,15 +46,17 @@
 
 Use cases
 
-- Visualize Running PIDs
-- Kill Process
-- Interrupt Process
-- Switch to Foreground/BG
-- Sort By CPU 
-- Sort By RAM
-- Sort By Disk Usage
-- Sort By Network Activity
-- View process history
+| Use Case | Completed By |
+| --- | --- |
+| Visualize Running PIDs | Name Here |
+| Kill Process |  | 
+| Interrupt Process | |
+| Sort By CPU | | 
+| Sort By RAM | | 
+| Sort By Disk Usage | | 
+| Sort By Network Activity | | 
+| View process history | | 
+| Switch to Foreground/BG | | 
 
 
 
