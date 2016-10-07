@@ -13,7 +13,7 @@
 | ID | Requirement  | Topic Area | Priority  |
 | :---: | --- | --- | --- |
 | US-01 | I want to be able to review  my processes visually | Visualization | Critical  |
-| US-02 | I want to be able to manage my processes by interacting with the visualization | Process Management | High |
+| US-02 | I want to manage my processes by interacting with the visualization | Process Management | High |
 | US-03 | I want to see a history of my usage | Recording | Medium |
 | US-04 | I want to be able to sort my processes by different metrics | Visualization | Medium |
 
