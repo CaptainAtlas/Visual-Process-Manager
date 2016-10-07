@@ -29,6 +29,8 @@
 | FR-05 | Processes can be sorted by category/metric | Management | Medium |
 | FR-06 | Process data can be stored in a database | Recording | Medium |
 | FR-07 | Database data can be shown over time | Visualization | Medium |
+| FR-08 | I don't want to be able to close the program with the program    | Management | Low      |
+
 
 
 **Non-Functional Requirements**
@@ -37,7 +39,6 @@
 |:------:|-------------------------------------------------------------------|---------------|----------|
 | NF-001 | I want the visualization to be sleek and intuitive                | Visualization | Low      |
 | NF-002 | I want to be the only one that can access my data                 | Security      | Medium   |
-| NF-003 | I don't want to be able to close the program with  the program    | Functionality | Low      |
 | NF-004 | I want the color and locality of process nodes to be descriptive  | Visualization | Medium   |
 | NF-005 | I want my data to be updated in reasonable time                   | Performance   | Low      |
 
