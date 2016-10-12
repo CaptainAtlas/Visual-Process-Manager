@@ -46,15 +46,13 @@
 
 Use cases
 
-| Use Case | ID | Completed By |
-| --- | --- | --- |
-| Visualize Running Processes | UC-01 | |
-| Process Management | UC-02 | Dan Bye |
-| Sort Processes | UC-03 | Dan Bye |
-| View process history | UC-04 | |
-| View Process Detail | UC-05 | |
-
-
+| Use Case | ID | 
+| --- | --- |
+| Visualize Running Processes | UC-01 |
+| Process Management | UC-02 |
+| Sort Processes | UC-03 |
+| View process history | UC-04 |
+| View Process Detail | UC-05 |
 
 
 
