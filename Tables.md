@@ -46,17 +46,14 @@
 
 Use cases
 
-| Use Case | Completed By |
-| --- | --- |
-| Visualize Running PIDs | Name Here |
-| Kill Process |  | 
-| Interrupt Process | |
-| Sort By CPU | | 
-| Sort By RAM | | 
-| Sort By Disk Usage | | 
-| Sort By Network Activity | | 
-| View process history | | 
-| Switch to Foreground/BG | | 
+| Use Case | ID | Completed By |
+| --- | --- | --- |
+| Visualize Running Processes | UC-01 | |
+| Process Management | UC-02 | Dan Bye |
+| Sort Processes | UC-03 | Dan Bye |
+| View process history | UC-04 | |
+| View Process Detail | UC-05 | |
+
 
 
 
