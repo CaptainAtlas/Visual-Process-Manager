@@ -1,10 +1,10 @@
-Use Case ID,<ID>,,,,,
-Use Case Name,<Name>,,,,,
-Description,Description,,,,,
-Actors,Actors,,,,,
-Pre-Conditions,Conditions required before use case is possible
-Post-Conditions,Result of use case
-Frequency of Use,Freq Relative to other use cases
+Use Case ID,<ID>,
+Use Case Name,<Name>,
+Description,Description,
+Actors,Actors,
+Pre-Conditions,Conditions required before use case is possible,
+Post-Conditions,Result of use case,
+Frequency of Use,Freq Relative to other use cases,
 Flow of events,Actor Action,System Response
 ,,,
 ,,,
