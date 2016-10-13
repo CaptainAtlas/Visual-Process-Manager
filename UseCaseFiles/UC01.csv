@@ -5,10 +5,5 @@ Actors,User,
 Pre-Conditions,User must have priveleges to get process information,
 Post-Conditions,A graph is rendered whose nodes's size color and locality are based on process attributes,
 Frequency of Use,Once initially and then each time a process is spawned or killed,
-Flow of events,Actor Action,System Response
-,,
-,,
-,,
-,,
-,,
-Variations,,
+Flow of events, User executes program, System visualizes processes as nodes in a graph
+
