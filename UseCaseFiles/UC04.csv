@@ -1,8 +1,0 @@
-Use Case ID,04,           
-Use Case Name,View Process History,
-Description, We want to generate graphs of process attributes over time ,
-Actors,User and System, 
-Pre-Conditions, Database must be populated with Historical Process information,
-Post-Conditions, Charts are generated detailing historical process attributes over time,
-Frequency of Use, Moderately frequent depending on user needs,
-Flow of events, User prompts program to display historical information, System visualizes process history in chart

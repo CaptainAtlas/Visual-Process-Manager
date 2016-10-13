@@ -1,8 +1,0 @@
-Use Case ID,01,
-Use Case Name,View Process Detail,
-Description,Showing details of the process by clicking on a node,
-Actors,User and System,
-Pre-Conditions,User must have priveleges to get process information,
-Post-Conditions,Information will be displayed when a node is clicked details on the process will be displayed,
-Frequency of Use,As many times as the user clicks on a node,
-Flow of events, User clicks on a node, System displays information on the process
