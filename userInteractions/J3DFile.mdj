@@ -9134,7 +9134,7 @@
 											"containerChangeable": false,
 											"containerExtending": false,
 											"left": 71,
-											"top": 10,
+											"top": 5,
 											"width": 114,
 											"height": 13,
 											"autoResize": false,
@@ -9159,7 +9159,7 @@
 											"containerChangeable": false,
 											"containerExtending": false,
 											"left": 5,
-											"top": 10,
+											"top": 5,
 											"width": 61,
 											"height": 13,
 											"autoResize": false,
@@ -9179,7 +9179,7 @@
 									"containerChangeable": false,
 									"containerExtending": false,
 									"left": 0,
-									"top": 5,
+									"top": 0,
 									"width": 695,
 									"height": 595,
 									"autoResize": false,
@@ -9453,7 +9453,7 @@
 													"height": 13,
 													"autoResize": false,
 													"underline": false,
-													"text": "Actor",
+													"text": "User",
 													"horizontalAlignment": 2,
 													"verticalAlignment": 5
 												},
@@ -11839,6 +11839,51 @@
 									},
 									"showProperty": true,
 									"showType": true
+								},
+								{
+									"_type": "UMLTextView",
+									"_id": "AAAAAAFXvvVxobViU/k=",
+									"_parent": {
+										"$ref": "AAAAAAFXvA5rypaBFq4="
+									},
+									"visible": true,
+									"enabled": true,
+									"lineColor": "#000000",
+									"fillColor": "#ffffff",
+									"fontColor": "#000000",
+									"font": "Arial;13;0",
+									"showShadow": true,
+									"containerChangeable": false,
+									"containerExtending": false,
+									"left": 464,
+									"top": 424,
+									"width": 177,
+									"height": 65,
+									"autoResize": false,
+									"text": "James Draper, UC05,  US-01, This use case allows you to view each node in better detail.",
+									"wordWrap": true
+								},
+								{
+									"_type": "UMLTextView",
+									"_id": "AAAAAAFXvvXScrVpWR8=",
+									"_parent": {
+										"$ref": "AAAAAAFXvA5rypaBFq4="
+									},
+									"visible": true,
+									"enabled": true,
+									"lineColor": "#000000",
+									"fillColor": "#ffffff",
+									"fontColor": "#000000",
+									"font": "Arial;13;0",
+									"showShadow": true,
+									"containerChangeable": false,
+									"containerExtending": false,
+									"left": 496,
+									"top": 456,
+									"width": 60,
+									"height": 15,
+									"autoResize": false,
+									"wordWrap": true
 								}
 							],
 							"showSequenceNumber": true,
@@ -12057,7 +12102,7 @@
 							"_parent": {
 								"$ref": "AAAAAAFXvA5ryZaADMc="
 							},
-							"name": "Actor",
+							"name": "User",
 							"visibility": "public",
 							"represent": {
 								"$ref": "AAAAAAFXvsEZjLHXDpQ="
