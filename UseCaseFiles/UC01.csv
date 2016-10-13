@@ -1,7 +1,7 @@
 Use Case ID,01,
 Use Case Name,Visualize Running Processes,
 Description,We want to visually render processes as nodes in a graph,
-Actors,User,
+Actors,User and System,
 Pre-Conditions,User must have priveleges to get process information,
 Post-Conditions,A graph is rendered whose nodes's size color and locality are based on process attributes,
 Frequency of Use,Once initially and then each time a process is spawned or killed,
