@@ -3997,7 +3997,7 @@
 											"height": 13,
 											"autoResize": false,
 											"underline": false,
-											"text": "Get Running User",
+											"text": "Get Calling User",
 											"horizontalAlignment": 2,
 											"verticalAlignment": 5
 										},
@@ -5653,7 +5653,7 @@
 					"_parent": {
 						"$ref": "AAAAAAFXuliJgIC2I4U="
 					},
-					"name": "Get Running User",
+					"name": "Get Calling User",
 					"visibility": "public",
 					"isAbstract": false,
 					"isFinalSpecialization": false,
