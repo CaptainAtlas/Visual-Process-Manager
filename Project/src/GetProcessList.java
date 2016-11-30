@@ -37,19 +37,18 @@ public class GetProcessList {
 
             // Read the processes from system and add & as delimiter for tokenize the output
             String line = bufferedReader.readLine();
+            String pid = null;
+            String cpu = null;
+            String mem = null;
 //            process = "&";
             while (line != null) {
-                if (line != null && line.trim().equals("")) {
-                    continue;
-                } else {
                     line = bufferedReader.readLine();
                     String[] temp = line.trim().split("\\s+");
-                    String pid = temp[0];
-                    String cpu = temp[1];
-                    String mem = temp[2];
+                    pid = temp[0];
+                    cpu = temp[1];
+                    mem = temp[2];
                     System.out.println(pid + ":" + cpu + ":" + mem);
                     //process += line + "&";
-                }
             }
 
             // Close the Streams
