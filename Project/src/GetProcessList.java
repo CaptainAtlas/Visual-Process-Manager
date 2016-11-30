@@ -10,17 +10,17 @@
 // 1. Imports
 
 import java.io.*;
-import java.util.StringTokenizer;
+import java.util.*;
 
 
-// 2. GetProcessList: Gets and exports prrocess information
+// 2. GetProcessList: Gets and exports process information
 
 public class GetProcessList {
 // a. Reads data using Runtime
-    private String GetProcessListData() {
+    private String[] GetProcessListData() {
         Process p;
         Runtime runTime;
-        String process = null;
+        String[] process = null;
         try {
             System.out.println("Reading Processes...");
 
@@ -28,7 +28,7 @@ public class GetProcessList {
             runTime = Runtime.getRuntime();
 
             // Command executed determines information that is read
-            p = runTime.exec("ps -e -o pid,pcpu,pmem,comm");
+            p = runTime.exec("ps -e -o pid,pcpu,pmem");
 
             // Create Inputstream for Read Processes
             InputStream inputStream = p.getInputStream();
@@ -37,10 +37,19 @@ public class GetProcessList {
 
             // Read the processes from system and add & as delimiter for tokenize the output
             String line = bufferedReader.readLine();
-            process = "&";
+//            process = "&";
             while (line != null) {
-                line = bufferedReader.readLine();
-                process += line + "&";
+                if (line != null && line.trim().equals("")) {
+                    continue;
+                } else {
+                    line = bufferedReader.readLine();
+                    String[] temp = line.trim().split("\\s+");
+                    String pid = temp[0];
+                    String cpu = temp[1];
+                    String mem = temp[2];
+                    System.out.println(pid + ":" + cpu + ":" + mem);
+                    //process += line + "&";
+                }
             }
 
             // Close the Streams
@@ -55,40 +64,17 @@ public class GetProcessList {
         }
         return process;
     }
-// b. Exporting gathered data into a file... probably should be a separate class.
-    private void showProcessData() {
-        try {
 
-            // Call GetProcessListData to cache information
-            String proc = GetProcessListData();
-
-            // Streams for file output.
-            // Filepath can be a fullpath, if not the file will be in the pwd.
-            OutputStreamWriter outputStreamWriter =
-                    new OutputStreamWriter(new FileOutputStream("ProcessList.txt"));
-            BufferedWriter bufferedWriter = new BufferedWriter(outputStreamWriter);
-
-            // Separating the output for manipulation
-            StringTokenizer st = new StringTokenizer(proc, "&");
-
-            while (st.hasMoreTokens()) {
-                bufferedWriter.write(st.nextToken());  // Write current line
-                bufferedWriter.newLine();
-            }
-
-            // Close output streams.
-            bufferedWriter.close();
-            outputStreamWriter.close();
-
-        } catch (IOException ioe) {
-            ioe.printStackTrace();
-        }
-
+    private void printProcesses() {
+        String[] proc = GetProcessListData();
+        System.out.println(proc);
+        return;
     }
 
     public static void main(String[] args) {
         GetProcessList processes = new GetProcessList();
-        processes.showProcessData();
+        processes.printProcesses();
+        //processes.insertProcessData();
 
     }
 }
