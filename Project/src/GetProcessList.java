@@ -28,7 +28,7 @@ public class GetProcessList {
             runTime = Runtime.getRuntime();
 
             // Command executed determines information that is read
-            p = runTime.exec("ps -e -o pid,pcpu,pmem");
+            p = runTime.exec("ps -e -o pid,pcpu,pmem,comm");
 
             // Create Inputstream for Read Processes
             InputStream inputStream = p.getInputStream();
