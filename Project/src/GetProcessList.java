@@ -10,6 +10,10 @@
 // 1. Imports
 
 import java.io.*;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.Statement;
 import java.util.*;
 
 
@@ -42,6 +46,7 @@ public class GetProcessList {
             String mem = null;
 //            process = "&";
             while (line != null) {
+                try {
                     line = bufferedReader.readLine();
                     String[] temp = line.trim().split("\\s+");
                     pid = temp[0];
@@ -49,6 +54,9 @@ public class GetProcessList {
                     mem = temp[2];
                     System.out.println(pid + ":" + cpu + ":" + mem);
                     //process += line + "&";
+                } catch (NullPointerException e){
+                    System.err.println("null pointer oh noes!");
+                }
             }
 
             // Close the Streams
@@ -74,6 +82,21 @@ public class GetProcessList {
         GetProcessList processes = new GetProcessList();
         processes.printProcesses();
         //processes.insertProcessData();
-
+        try{
+            String myDriver = "org.gjt.mm.mysql.Driver";
+            String url = "jdbc:mysql://localhost:3306/ProcessData?useSSL=false";
+            Class.forName(myDriver);
+            Connection conn = DriverManager.getConnection(url,"root","dumb_password");
+            Statement st = conn.createStatement();
+//            st.executeUpdate("INSERT INTO Pdata VALUES(1, 7, 27)");
+//            st.executeUpdate("INSERT INTO Pdata VALUES(2, 49, 27*27)");
+            ResultSet set = st.executeQuery("SELECT cpu FROM Pdata WHERE pid=1");
+            if(set.next()) {
+                float cpu = set.getFloat("cpu");
+                System.out.println(cpu);
+            }
+            st.close();} catch (Exception e){
+            System.err.println(e.getMessage());
+        }
     }
 }

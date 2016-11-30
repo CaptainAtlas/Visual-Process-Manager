@@ -4,7 +4,6 @@
 public class VisualGraph {
     private Boolean addNode() {
         return true;
-
     }
 
     private Boolean removeNode() {

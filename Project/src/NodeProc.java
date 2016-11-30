@@ -15,5 +15,6 @@ public class NodeProc {
     }
     public float getPid(){
         return this.pid;
+
     }
 }
