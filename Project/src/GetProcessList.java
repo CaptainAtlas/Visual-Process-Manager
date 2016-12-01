@@ -14,7 +14,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
-import java.util.*;
+import java.sql.SQLException;
 
 
 // 2. GetProcessList: Gets and exports process information
@@ -44,7 +44,10 @@ public class GetProcessList {
             String pid = null;
             String cpu = null;
             String mem = null;
-//            process = "&";
+
+            //MySQL setup
+
+            //            process = "&";
             while (line != null) {
                 try {
                     line = bufferedReader.readLine();
@@ -53,9 +56,20 @@ public class GetProcessList {
                     cpu = temp[1];
                     mem = temp[2];
                     System.out.println(pid + ":" + cpu + ":" + mem);
-                    //process += line + "&";
+
+                    //mySQL setup
+                    String myDriver = "org.gjt.mm.mysql.Driver";
+                    String url = "jdbc:mysql://localhost:3306/ProcessData?useSSL=false";
+                    Class.forName(myDriver);
+                    Connection conn = DriverManager.getConnection(url,"root","dumb_password");
+                    Statement st = conn.createStatement();
+                    ResultSet set = st.executeQuery("INSERT INTO Pdata (PID,CPU,MEM)");
                 } catch (NullPointerException e){
                     System.err.println("null pointer oh noes!");
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                } catch (Exception e){
+                    System.err.println(e.getMessage());
                 }
             }
 
@@ -82,21 +96,21 @@ public class GetProcessList {
         GetProcessList processes = new GetProcessList();
         processes.printProcesses();
         //processes.insertProcessData();
-        try{
-            String myDriver = "org.gjt.mm.mysql.Driver";
-            String url = "jdbc:mysql://localhost:3306/ProcessData?useSSL=false";
-            Class.forName(myDriver);
-            Connection conn = DriverManager.getConnection(url,"root","dumb_password");
-            Statement st = conn.createStatement();
-//            st.executeUpdate("INSERT INTO Pdata VALUES(1, 7, 27)");
-//            st.executeUpdate("INSERT INTO Pdata VALUES(2, 49, 27*27)");
-            ResultSet set = st.executeQuery("SELECT cpu FROM Pdata WHERE pid=1");
-            if(set.next()) {
-                float cpu = set.getFloat("cpu");
-                System.out.println(cpu);
-            }
-            st.close();} catch (Exception e){
-            System.err.println(e.getMessage());
-        }
+//        try{
+//            String myDriver = "org.gjt.mm.mysql.Driver";
+//            String url = "jdbc:mysql://localhost:3306/ProcessData?useSSL=false";
+//            Class.forName(myDriver);
+//            Connection conn = DriverManager.getConnection(url,"root","dumb_password");
+//            Statement st = conn.createStatement();
+////            st.executeUpdate("INSERT INTO Pdata VALUES(1, 7, 27)");
+////            st.executeUpdate("INSERT INTO Pdata VALUES(2, 49, 27*27)");
+//            ResultSet set = st.executeQuery("SELECT cpu FROM Pdata WHERE pid=1");
+//            if(set.next()) {
+//                float cpu = set.getFloat("cpu");
+//                System.out.println(cpu);
+//            }
+//            st.close();} catch (Exception e){
+//            System.err.println(e.getMessage());
+//        }
     }
 }
