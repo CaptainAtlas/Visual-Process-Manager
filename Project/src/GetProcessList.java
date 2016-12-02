@@ -10,11 +10,8 @@
 // 1. Imports
 
 import java.io.*;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.Statement;
-import java.sql.SQLException;
+import java.sql.*;
+
 
 
 // 2. GetProcessList: Gets and exports process information
@@ -41,9 +38,9 @@ public class GetProcessList {
 
             // Read the processes from system and add & as delimiter for tokenize the output
             String line = bufferedReader.readLine();
-            String pid = null;
-            String cpu = null;
-            String mem = null;
+            String tpid = null;
+            String tcpu = null;
+            String tmem = null;
 
             //MySQL setup
 
@@ -52,18 +49,22 @@ public class GetProcessList {
                 try {
                     line = bufferedReader.readLine();
                     String[] temp = line.trim().split("\\s+");
-                    pid = temp[0];
-                    cpu = temp[1];
-                    mem = temp[2];
-                    System.out.println(pid + ":" + cpu + ":" + mem);
+                    tpid = temp[0];
+                    tcpu = temp[1];
+                    tmem = temp[2];
+                    //System.out.println(pid + ":" + cpu + ":" + mem);
 
                     //mySQL setup
-                    String myDriver = "org.gjt.mm.mysql.Driver";
+                    String myDriver = "com.mysql.jdbc.Driver";
                     String url = "jdbc:mysql://localhost:3306/ProcessData?useSSL=false";
                     Class.forName(myDriver);
                     Connection conn = DriverManager.getConnection(url,"root","dumb_password");
-                    Statement st = conn.createStatement();
-                    ResultSet set = st.executeQuery("INSERT INTO Pdata (PID,CPU,MEM) VALUES (pid, cpu, mem)");
+                    String update = "INSERT INTO Pdata(pid,cpu,ram) VALUES (?, ?, ?)";
+                    PreparedStatement st = conn.prepareStatement(update);
+                    st.setString(1, tpid);
+                    st.setString(2, tcpu);
+                    st.setString(3, tmem);
+                    st.executeUpdate();
                 } catch (NullPointerException e){
                     System.err.println("null pointer oh noes!");
                 } catch (SQLException e) {
