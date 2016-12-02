@@ -63,7 +63,7 @@ public class GetProcessList {
                     Class.forName(myDriver);
                     Connection conn = DriverManager.getConnection(url,"root","dumb_password");
                     Statement st = conn.createStatement();
-                    ResultSet set = st.executeQuery("INSERT INTO Pdata (PID,CPU,MEM)");
+                    ResultSet set = st.executeQuery("INSERT INTO Pdata (PID,CPU,MEM) VALUES (pid, cpu, mem)");
                 } catch (NullPointerException e){
                     System.err.println("null pointer oh noes!");
                 } catch (SQLException e) {
