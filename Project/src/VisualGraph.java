@@ -132,10 +132,11 @@ class StandardColoursEx extends JFrame {
 
 public class VisualGraph {
     private Boolean addNode() {
-
+        return true;
     }
 
     private Boolean removeNode() {
+        return true;
 
     }
 }*/
