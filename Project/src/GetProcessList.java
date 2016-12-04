@@ -13,7 +13,6 @@ import java.io.*;
 import java.sql.*;
 
 
-
 // 2. GetProcessList: Gets and exports process information
 
 public class GetProcessList {
@@ -21,6 +20,7 @@ public class GetProcessList {
     private String[] GetProcessListData() {
         Process p;
         Runtime runTime;
+        OpenDBConn DBConn;
         String[] process = null;
         Connection conn = null;
         PreparedStatement st = null;
@@ -52,10 +52,11 @@ public class GetProcessList {
                     //System.out.println(pid + ":" + cpu + ":" + mem);
 
                     //mySQL setup
-                    String myDriver = "com.mysql.jdbc.Driver";
-                    String url = "jdbc:mysql://localhost:3306/ProcessData?useSSL=false";
-                    Class.forName(myDriver);
-                    conn = DriverManager.getConnection(url, "root", "dumb_password");
+//                    String myDriver = "com.mysql.jdbc.Driver";
+//                    String url = "jdbc:mysql://localhost:3306/ProcessData?useSSL=false";
+//                    Class.forName(myDriver);
+//                    conn = DriverManager.getConnection(url, "root", "dumb_password");
+                    conn = OpenDBConn.openConnection();
                     String update = "INSERT INTO Pdata(pid,cpu,ram) VALUES (?, ?, ?)";
                     st = conn.prepareStatement(update);
                     st.setString(1, tpid);
