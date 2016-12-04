@@ -27,7 +27,7 @@ class VisualGraph extends NodeProc {
     private void initUI() {
 
         NodeProc myNode = new NodeProc();
-        NodeProc myNode2 = new NodeProc(1, 0.25f, 0.9f);
+        NodeProc myNode2 = new NodeProc(1, 7.3f, 88.8f); //cpu cuttoff at 25 and 1, ram cuttoff 7 and 1
 
 
 
@@ -51,7 +51,7 @@ class VisualGraph extends NodeProc {
 
         int location = 400;
 
-        for(int i = 0; i < array.length; i++){
+        for(int i = 0; i < 2/*array.length*/; i++){
 
             //panel.add(new JButton("test2"));
             //this.guiFrame.setLocation(10,10);
@@ -72,17 +72,36 @@ class VisualGraph extends NodeProc {
 
             //Button Size from ram
             Float ramF = myNode2.getRamUsage();
-            ramF = ramF * 100;
+            if (ramF > 7){
+                ramF = 7f;
+            }
+            if (ramF < 1){
+                ramF = 1f;
+            }
             int ram = Math.round(ramF);
+            ram = ram * 15;
             nodeBtn.setSize(ram,ram);
 
             //Button Color, not fleshed out
-            float blueF = 155;
-            float redF = 155;
+            float blueF = 10;
+            float redF = 10;
 
             Float cpuF = myNode2.getCpuUsage();
-            int blue = Math.round(blueF/cpuF);
-            int red = Math.round(redF * cpuF);
+
+            if (cpuF > 25){
+                cpuF = 25f;
+            }
+            if (cpuF < 1){
+                cpuF = 1f;
+            }
+
+            if (cpuF == 25){
+                redF = redF * cpuF;
+            }
+
+
+            int blue = Math.round(blueF);
+            int red = Math.round(redF);
 
 
             Color btnColor = new Color(red,0,blue);
@@ -116,9 +135,9 @@ class VisualGraph extends NodeProc {
 
             location = location + 100;*/
 
-            /*nodeBtn.addActionListener((ActionEvent event) -> {
+            nodeBtn.addActionListener((ActionEvent event) -> {
                 System.exit(0);
-            });*/
+            });
 
 
         }
