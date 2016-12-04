@@ -18,9 +18,9 @@ public class DBConnection {
         return conn;
     }
     public Connection RecreateTable() throws ClassNotFoundException, SQLException {
-        Connection conn = null;
-        Statement drop = null;
-        Statement recreate = null;
+        Connection conn;
+        Statement drop;
+        Statement recreate;
         conn = openConnection();
         drop = conn.createStatement();
         drop.executeUpdate("DROP TABLE IF EXISTS Pdata");
