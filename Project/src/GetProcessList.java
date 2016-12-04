@@ -24,6 +24,8 @@ public class GetProcessList {
         String[] process = null;
         Connection conn = null;
         PreparedStatement st = null;
+        Statement drop = null;
+        Statement recreate = null;
         try {
             System.out.println("Reading Processes...");
 
@@ -48,7 +50,6 @@ public class GetProcessList {
             //Have to drop the database to ensure nodes are regenerated instead of added.
             conn = DBConn.RecreateTable();
 
-            //            process = "&";
             while (line != null) {
                 try {
                     line = bufferedReader.readLine();
@@ -58,42 +59,12 @@ public class GetProcessList {
                     tmem = temp[2];
                     //System.out.println(pid + ":" + cpu + ":" + mem);
 
-                    //mySQL setup
-//                    String myDriver = "com.mysql.jdbc.Driver";
-//                    String url = "jdbc:mysql://localhost:3306/ProcessData?useSSL=false";
-//                    Class.forName(myDriver);
-//                    conn = DriverManager.getConnection(url, "root", "dumb_password");
-//                    conn = DBConn.openConnection();
-                    String update = "INSERT INTO Pdata(pid,cpu,ram) VALUES (?, ?, ?)";
-                    st = conn.prepareStatement(update);
-                    st.setString(1, tpid);
-                    st.setString(2, tcpu);
-                    st.setString(3, tmem);
-                    st.executeUpdate();
-                   // conn.close();
-                   // st.close();
 
 
                 } catch (NullPointerException e) {
                    // e.printStackTrace();
 //                    System.err.println("null pointer oh noes!");
-                } catch (Exception e) {
-                    e.printStackTrace();
-                } finally {
-                    if (st != null) {
-                        try {
-                            st.close();
-                        } catch (SQLException e) {
-                            e.printStackTrace();
-                        }
-                    }
-                    if (conn != null) {
-                        try {
-                            conn.close();
-                        } catch (SQLException e) {
-                            e.printStackTrace();
-                        }
-                    }
+
                 }
             }
 
@@ -102,15 +73,43 @@ public class GetProcessList {
             bufferedReader.close();
             inputStreamReader.close();
             inputStream.close();
-
             System.out.println("Reading complete.");
         } catch (IOException e) {
             System.out.println("ERROR: Processes could not be read.");
             e.printStackTrace();
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
         } catch (SQLException e) {
             e.printStackTrace();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if (st != null) {
+                try {
+                    st.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+            if(drop != null){
+                try{
+                    drop.close();
+                } catch (SQLException e){
+                    e.printStackTrace();
+                }
+            }
+            if(recreate != null){
+                try{
+                    drop.close();
+                } catch (SQLException e){
+                    e.printStackTrace();
+                }
+            }
+            if (conn != null) {
+                try {
+                    conn.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
         }
 
         return process;

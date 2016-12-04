@@ -20,15 +20,15 @@ class VisualGraph extends NodeProc {
     JFrame guiFrame = new JFrame();
 
     public VisualGraph() {
+
         initUI();
     }
 
     private void initUI() {
 
         NodeProc myNode = new NodeProc();
-        NodeProc myNode2 = new NodeProc(1, 2, 3);
+        NodeProc myNode2 = new NodeProc(1, 7.3f, 88.8f); //cpu cuttoff at 25 and 1, ram cuttoff 7 and 1
 
-        
 
 
         //Float pid = myNode2.getPid();
@@ -47,21 +47,11 @@ class VisualGraph extends NodeProc {
                 {"20", ".05", ".7"},
                 {"150", ".02", ".3"}
         };
-        JButton[] buttons = new JButton[4];
-
-        /*String[][] array = {
-                {"35", ".01", ".5"}
-        };*/
-
-        /*String[] array = {
-                "35",
-                "45"
-        };*/
-
+        //JButton[] buttons = new JButton[4];
 
         int location = 400;
 
-        for(int i = 0; i <= array.length; i++){
+        for(int i = 0; i < 2/*array.length*/; i++){
 
             //panel.add(new JButton("test2"));
             //this.guiFrame.setLocation(10,10);
@@ -72,24 +62,57 @@ class VisualGraph extends NodeProc {
             //ram = array[i].getRAM
             //buttons[i] = new JButton(pid);
 
+            JButton nodeBtn = new JButton();
+
             //Pid name on button
             Float pidF = myNode2.getPid();
             int pidI = Math.round(pidF);
             String pid = Integer.toString(pidI);
-
-
-            JButton nodeBtn = new JButton(pid);
+            nodeBtn.setText(pid);
 
             //Button Size from ram
-            Float ramF = myNode2.getCpuUsage();
-            ramF = ramF * 100;
+            Float ramF = myNode2.getRamUsage();
+            if (ramF > 7){
+                ramF = 7f;
+            }
+            if (ramF < 1){
+                ramF = 1f;
+            }
             int ram = Math.round(ramF);
+            ram = ram * 15;
             nodeBtn.setSize(ram,ram);
 
             //Button Color, not fleshed out
-            nodeBtn.setBackground(Color.red);
+            float blueF = 10;
+            float redF = 10;
 
-            nodeBtn.setLocation(0, location);
+            Float cpuF = myNode2.getCpuUsage();
+
+            if (cpuF > 25){
+                cpuF = 25f;
+            }
+            if (cpuF < 1){
+                cpuF = 1f;
+            }
+
+            if (cpuF == 25){
+                redF = redF * cpuF;
+            }
+
+
+            int blue = Math.round(blueF);
+            int red = Math.round(redF);
+
+
+            Color btnColor = new Color(red,0,blue);
+
+            nodeBtn.setBackground(btnColor);
+            nodeBtn.setOpaque(true);
+            nodeBtn.setBorderPainted(false);
+
+
+
+            nodeBtn.setLocation(location, location);
             location = location - 100;
 
             createLayout(nodeBtn);
@@ -112,6 +135,10 @@ class VisualGraph extends NodeProc {
 
             location = location + 100;*/
 
+            nodeBtn.addActionListener((ActionEvent event) -> {
+                System.exit(0);
+            });
+
 
         }
 
@@ -123,7 +150,7 @@ class VisualGraph extends NodeProc {
 
         //panel.add(new JButton("test2"));
 
-        JButton quitButton = new JButton("Quit");
+        /*JButton quitButton = new JButton("Quit");
         JButton nodeButton = new JButton("Node");
 
         quitButton.addActionListener((ActionEvent event) -> {
@@ -135,12 +162,12 @@ class VisualGraph extends NodeProc {
         });
 
         //createLayout(quitButton);
-        //createLayout(nodeButton);
+        //createLayout(nodeButton);*/
 
         guiFrame.setTitle("buttons");
         guiFrame.setSize(800, 800);
         guiFrame.setLocationRelativeTo(null);
-        //guiFrame.setDefaultCloseOperation(EXIT_ON_CLOSE);
+        guiFrame.setDefaultCloseOperation(guiFrame.EXIT_ON_CLOSE);
     }
 
     private void createLayout(JComponent... arg) {

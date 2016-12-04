@@ -4,20 +4,24 @@
 import org.omg.SendingContext.RunTime;
 
 import javax.swing.*;
+import java.awt.*;
 import java.io.*;
 import java.util.StringTokenizer;
 
 public class GraphNode extends NodeProc{
     private NodeProc proc;
-    private String color;
+    private Color color;
     private float locality;
     private float size;
     GraphNode(){
-        this.color = "BLACK";
+        this.color = new Color(0, 0, 0);
         this.locality = 0;
         this.size = 27;
     }
-    GraphNode(NodeProc newProc, String newColor, float newLocality, float newSize){
+    GraphNode(NodeProc newProc){
+        this.proc = newProc;
+    }
+    GraphNode(NodeProc newProc, Color newColor, float newLocality, float newSize){
         this.proc = newProc;
         this.color = newColor;
         this.locality = newLocality;
@@ -27,27 +31,33 @@ public class GraphNode extends NodeProc{
     public NodeProc getProcess(){
         return this.proc;
     }
-    public String getColor(){
+
+    public Color getColor(){
         return this.color;
     }
-    public void setColor(String newColor){
+
+    public void setColor(Color newColor){
         this.color = newColor;
         return;
     }
     public float getLocality(){
         return this.locality;
     }
+
     public void setLocality(float newLocality){
         this.locality = newLocality;
         return;
     }
+
     public float getSize(){
         return this.size;
     }
+
     public void setSize(float newSize){
         this.size = newSize;
         return;
     }
+
     public boolean signalProcess(String command) throws IOException {
         Runtime runTime;
         runTime = Runtime.getRuntime();
