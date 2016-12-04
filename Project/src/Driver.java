@@ -1,6 +1,5 @@
 
-public class Driver extends GetProcessList {
-    Driver() {}
+public class Driver{
         public static void main (String[]args){
             GetProcessList processes = new GetProcessList();
             processes.printProcesses();
