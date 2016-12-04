@@ -59,12 +59,19 @@ public class GetProcessList {
                     tmem = temp[2];
                     //System.out.println(pid + ":" + cpu + ":" + mem);
 
+                    //mySQL Data Insertion
+
+                    String update = "INSERT INTO Pdata(pid,cpu,ram) VALUES (?, ?, ?)";
+                    st = conn.prepareStatement(update);
+                    st.setString(1, tpid);
+                    st.setString(2, tcpu);
+                    st.setString(3, tmem);
+                    st.executeUpdate();
 
 
                 } catch (NullPointerException e) {
                    // e.printStackTrace();
 //                    System.err.println("null pointer oh noes!");
-
                 }
             }
 
