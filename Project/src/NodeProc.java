@@ -11,8 +11,13 @@ public class NodeProc {
     private float ramUsage;
     private float cpuUsage;
     NodeProc(){
-        this.pid = 0;
-        this.cpuUsage = 0;
+        this.pid = -1;
+        this.cpuUsage = -1;
+        this.ramUsage = -1;
+    }
+    NodeProc(float pid){
+        this.cpuUsage = getCpuUsage();
+        this.ramUsage = getRamUsage();
     }
     NodeProc(float pid, float ramUsage, float cpuUsage){
         this.pid = pid;

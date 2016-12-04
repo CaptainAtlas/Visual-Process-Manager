@@ -20,7 +20,6 @@ class VisualGraph extends NodeProc {
     JFrame guiFrame = new JFrame();
 
     public VisualGraph() {
-
         initUI();
     }
 

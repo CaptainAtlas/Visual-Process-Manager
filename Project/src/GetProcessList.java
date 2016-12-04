@@ -67,11 +67,12 @@ public class GetProcessList {
 
 
                 } catch (NullPointerException e) {
-                    System.err.println("null pointer oh noes!");
+                   // e.printStackTrace();
+//                    System.err.println("null pointer oh noes!");
                 } catch (SQLException e) {
                     e.printStackTrace();
                 } catch (Exception e) {
-                    System.err.println(e.getMessage());
+                    e.printStackTrace();
                 } finally {
                     if (st != null) {
                         try {
@@ -107,7 +108,7 @@ public class GetProcessList {
 
     public void printProcesses() {
         String[] proc = GetProcessListData();
-        System.out.println(proc);
+        //System.out.println(proc);
         return;
     }
 }
