@@ -22,26 +22,23 @@ public class GetProcessList {
         Process p;
         Runtime runTime;
         String[] process = null;
+        Connection conn = null;
+        PreparedStatement st = null;
         try {
             System.out.println("Reading Processes...");
-
             // Get Runtime environment
             runTime = Runtime.getRuntime();
-
             // Command executed determines information that is read
             p = runTime.exec("ps -e -o pid,pcpu,pmem");
-
             // Create Inputstream for Read Processes
             InputStream inputStream = p.getInputStream();
             InputStreamReader inputStreamReader = new InputStreamReader(inputStream);
             BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
-
             // Read the processes from system and add & as delimiter for tokenize the output
             String line = bufferedReader.readLine();
             String tpid = null;
             String tcpu = null;
             String tmem = null;
-
             //MySQL setup
 
             //            process = "&";
@@ -58,21 +55,41 @@ public class GetProcessList {
                     String myDriver = "com.mysql.jdbc.Driver";
                     String url = "jdbc:mysql://localhost:3306/ProcessData?useSSL=false";
                     Class.forName(myDriver);
-                    Connection conn = DriverManager.getConnection(url,"root","dumb_password");
+                    conn = DriverManager.getConnection(url,"root","dumb_password");
                     String update = "INSERT INTO Pdata(pid,cpu,ram) VALUES (?, ?, ?)";
-                    PreparedStatement st = conn.prepareStatement(update);
+                    st = conn.prepareStatement(update);
                     st.setString(1, tpid);
                     st.setString(2, tcpu);
                     st.setString(3, tmem);
                     st.executeUpdate();
+                    conn.close();
+                    st.close();
+
+
                 } catch (NullPointerException e){
                     System.err.println("null pointer oh noes!");
                 } catch (SQLException e) {
                     e.printStackTrace();
                 } catch (Exception e){
                     System.err.println(e.getMessage());
+                } finally{
+                    if(st != null){
+                        try {
+                            st.close();
+                        } catch (SQLException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                    if(conn != null){
+                        try {
+                            conn.close();
+                        } catch (SQLException e) {
+                            e.printStackTrace();
+                        }
+                    }
                 }
             }
+
 
             // Close the Streams
             bufferedReader.close();
@@ -84,6 +101,7 @@ public class GetProcessList {
             System.out.println("ERROR: Processes could not be read.");
             e.printStackTrace();
         }
+
         return process;
     }
 
@@ -96,6 +114,9 @@ public class GetProcessList {
     public static void main(String[] args) {
         GetProcessList processes = new GetProcessList();
         processes.printProcesses();
+        NodeProc myNode = new NodeProc();
+        myNode.setPid(3269);
+        System.out.println(myNode.getCpuUsage());
         //processes.insertProcessData();
 //        try{
 //            String myDriver = "org.gjt.mm.mysql.Driver";
