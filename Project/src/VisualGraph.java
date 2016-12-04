@@ -2,139 +2,187 @@
  * Created by jamesdraper on 11/29/16.
  */
 
-package com.zetcode;
+//package com.zetcode;
 
-import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.EventQueue;
+import java.awt.*;
+import java.awt.event.ActionEvent;
 import java.util.ArrayList;
-import java.util.List;
-import javax.swing.GroupLayout;
-import javax.swing.JFrame;
-import static javax.swing.JFrame.EXIT_ON_CLOSE;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
+import javax.swing.*;
+import javax.xml.soap.Node;
 
-class MyLabel extends JLabel {
 
-    public MyLabel() {
-        super("", null, LEADING);
-    }
+//public class NodeProc
 
-    @Override
-    public boolean isOpaque() {
-        return true;
-    }
-}
+class VisualGraph extends NodeProc {
 
-class StandardColoursEx extends JFrame {
+   // NodeProc myNode = new NodeProc();
 
-    public StandardColoursEx() {
+    JFrame guiFrame = new JFrame();
+
+    public VisualGraph() {
 
         initUI();
     }
 
     private void initUI() {
 
-        Color[] stdCols = {Color.black, Color.blue, Color.cyan,
-                Color.darkGray, Color.gray, Color.green, Color.lightGray,
-                Color.magenta, Color.orange, Color.pink, Color.red,
-                Color.white, Color.yellow};
+        NodeProc myNode = new NodeProc();
+        NodeProc myNode2 = new NodeProc(1, 2, 3);
 
-        List<JLabel> labels = new ArrayList();
+        
 
-        for (Color col : stdCols) {
 
-            JLabel lbl = createColouredLabel(col);
-            labels.add(lbl);
+        //Float pid = myNode2.getPid();
+
+        //System.out.print(pid);
+
+        //ArrayList<JButton> nodes = new ArrayList<JButton>();
+
+        //JPanel panel = new JPanel(new FlowLayout());
+
+        //this.guiFrame.add(panel);
+
+        String[][] array = {
+                {"35", ".01", ".5"},
+                {"21", ".03", ".75"},
+                {"20", ".05", ".7"},
+                {"150", ".02", ".3"}
+        };
+        JButton[] buttons = new JButton[4];
+
+        /*String[][] array = {
+                {"35", ".01", ".5"}
+        };*/
+
+        /*String[] array = {
+                "35",
+                "45"
+        };*/
+
+
+        int location = 400;
+
+        for(int i = 0; i <= array.length; i++){
+
+            //panel.add(new JButton("test2"));
+            //this.guiFrame.setLocation(10,10);
+            //JButton nodeBtn = new JButton(array[i].getCpu();
+
+
+            //nodes.add(new JButton(array[i].getPID()));
+            //ram = array[i].getRAM
+            //buttons[i] = new JButton(pid);
+
+            //Pid name on button
+            Float pidF = myNode2.getPid();
+            int pidI = Math.round(pidF);
+            String pid = Integer.toString(pidI);
+
+
+            JButton nodeBtn = new JButton(pid);
+
+            //Button Size from ram
+            Float ramF = myNode2.getCpuUsage();
+            ramF = ramF * 100;
+            int ram = Math.round(ramF);
+            nodeBtn.setSize(ram,ram);
+
+            //Button Color, not fleshed out
+            nodeBtn.setBackground(Color.red);
+
+            nodeBtn.setLocation(0, location);
+            location = location - 100;
+
+            createLayout(nodeBtn);
+
+
+            //buttons[i] = new JButton(array[i][0]);
+
+            /*String ramS = array[i][2];
+            //System.out.print(ramHold);
+            Float ramF = Float.parseFloat(ramS);
+
+            ramF = ramF * 100;
+
+            int ram = Math.round(ramF);
+
+            //System.out.print(ram);
+            buttons[i].setSize(ram,ram);
+
+            buttons[i].setLocation(0,location);
+
+            location = location + 100;*/
+
+
         }
 
-        createLayout(labels.toArray(new JLabel[labels.size()]));
+        /*for(int j = 0; j < buttons.length; j++){
+            createLayout(buttons[j]);
+        }*/
 
-        setTitle("Standard colours");
-        setLocationRelativeTo(null);
-        setDefaultCloseOperation(EXIT_ON_CLOSE);
+        //panel.add(new JButton("test"));
+
+        //panel.add(new JButton("test2"));
+
+        JButton quitButton = new JButton("Quit");
+        JButton nodeButton = new JButton("Node");
+
+        quitButton.addActionListener((ActionEvent event) -> {
+            System.exit(0);
+        });
+
+        nodeButton.addActionListener((ActionEvent event) -> {
+            System.exit(0);
+        });
+
+        //createLayout(quitButton);
+        //createLayout(nodeButton);
+
+        guiFrame.setTitle("buttons");
+        guiFrame.setSize(800, 800);
+        guiFrame.setLocationRelativeTo(null);
+        //guiFrame.setDefaultCloseOperation(EXIT_ON_CLOSE);
     }
 
-    public JLabel createColouredLabel(Color col) {
+    private void createLayout(JComponent... arg) {
 
-        MyLabel lbl = new MyLabel();
-        lbl.setMinimumSize(new Dimension(90, 40));
-        lbl.setBackground(col);
-
-        return lbl;
-    }
-
-    private void createLayout(JLabel[] labels) {
-
-        JPanel pane = (JPanel) getContentPane();
+        Container pane = guiFrame.getContentPane();
         GroupLayout gl = new GroupLayout(pane);
         pane.setLayout(gl);
 
-        pane.setToolTipText("Content pane");
-
         gl.setAutoCreateContainerGaps(true);
-        gl.setAutoCreateGaps(true);
 
-        gl.setHorizontalGroup(gl.createParallelGroup()
-                .addGroup(gl.createSequentialGroup()
-                        .addComponent(labels[0])
-                        .addComponent(labels[1])
-                        .addComponent(labels[2])
-                        .addComponent(labels[3]))
-                .addGroup(gl.createSequentialGroup()
-                        .addComponent(labels[4])
-                        .addComponent(labels[5])
-                        .addComponent(labels[6])
-                        .addComponent(labels[7]))
-                .addGroup(gl.createSequentialGroup()
-                        .addComponent(labels[8])
-                        .addComponent(labels[9])
-                        .addComponent(labels[10])
-                        .addComponent(labels[11]))
-                .addComponent(labels[12])
+        gl.setHorizontalGroup(gl.createSequentialGroup()
+                .addComponent(arg[0])
         );
 
         gl.setVerticalGroup(gl.createSequentialGroup()
-                .addGroup(gl.createParallelGroup()
-                        .addComponent(labels[0])
-                        .addComponent(labels[1])
-                        .addComponent(labels[2])
-                        .addComponent(labels[3]))
-                .addGroup(gl.createParallelGroup()
-                        .addComponent(labels[4])
-                        .addComponent(labels[5])
-                        .addComponent(labels[6])
-                        .addComponent(labels[7]))
-                .addGroup(gl.createParallelGroup()
-                        .addComponent(labels[8])
-                        .addComponent(labels[9])
-                        .addComponent(labels[10])
-                        .addComponent(labels[11]))
-                .addComponent(labels[12])
+                .addComponent(arg[0])
         );
-
-        pack();
     }
 
     public static void main(String[] args) {
 
         EventQueue.invokeLater(() -> {
-            StandardColoursEx ex = new StandardColoursEx();
-            ex.setVisible(true);
+            VisualGraph ex = new VisualGraph();
+            ex.guiFrame.setVisible(true);
         });
     }
 }
 
 
 
-/**import javax.swing.*;
+/*import javax.swing.*;
 
 public class VisualGraph {
+    private Arraylist<GraphNode> nodes;
     private Boolean addNode() {
         return true;
     }
-
+    public void setNodeList(Arraylist<GraphNode> myNodes){
+        this.nodes = myNodes;
+        return;
+    }
     private Boolean removeNode() {
         return true;
 
