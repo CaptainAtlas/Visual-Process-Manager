@@ -17,7 +17,7 @@ import java.sql.*;
 // 2. GetProcessList: Gets and exports process information
 
 public class GetProcessList {
-// a. Reads data using Runtime
+    // a. Reads data using Runtime
     private String[] GetProcessListData() {
         Process p;
         Runtime runTime;
@@ -55,7 +55,7 @@ public class GetProcessList {
                     String myDriver = "com.mysql.jdbc.Driver";
                     String url = "jdbc:mysql://localhost:3306/ProcessData?useSSL=false";
                     Class.forName(myDriver);
-                    conn = DriverManager.getConnection(url,"root","dumb_password");
+                    conn = DriverManager.getConnection(url, "root", "dumb_password");
                     String update = "INSERT INTO Pdata(pid,cpu,ram) VALUES (?, ?, ?)";
                     st = conn.prepareStatement(update);
                     st.setString(1, tpid);
@@ -66,21 +66,21 @@ public class GetProcessList {
                     st.close();
 
 
-                } catch (NullPointerException e){
+                } catch (NullPointerException e) {
                     System.err.println("null pointer oh noes!");
                 } catch (SQLException e) {
                     e.printStackTrace();
-                } catch (Exception e){
+                } catch (Exception e) {
                     System.err.println(e.getMessage());
-                } finally{
-                    if(st != null){
+                } finally {
+                    if (st != null) {
                         try {
                             st.close();
                         } catch (SQLException e) {
                             e.printStackTrace();
                         }
                     }
-                    if(conn != null){
+                    if (conn != null) {
                         try {
                             conn.close();
                         } catch (SQLException e) {
@@ -105,34 +105,9 @@ public class GetProcessList {
         return process;
     }
 
-    private void printProcesses() {
+    public void printProcesses() {
         String[] proc = GetProcessListData();
         System.out.println(proc);
         return;
-    }
-
-    public static void main(String[] args) {
-        GetProcessList processes = new GetProcessList();
-        processes.printProcesses();
-        NodeProc myNode = new NodeProc();
-        myNode.setPid(3269);
-        System.out.println(myNode.getCpuUsage());
-        //processes.insertProcessData();
-//        try{
-//            String myDriver = "org.gjt.mm.mysql.Driver";
-//            String url = "jdbc:mysql://localhost:3306/ProcessData?useSSL=false";
-//            Class.forName(myDriver);
-//            Connection conn = DriverManager.getConnection(url,"root","dumb_password");
-//            Statement st = conn.createStatement();
-////            st.executeUpdate("INSERT INTO Pdata VALUES(1, 7, 27)");
-////            st.executeUpdate("INSERT INTO Pdata VALUES(2, 49, 27*27)");
-//            ResultSet set = st.executeQuery("SELECT cpu FROM Pdata WHERE pid=1");
-//            if(set.next()) {
-//                float cpu = set.getFloat("cpu");
-//                System.out.println(cpu);
-//            }
-//            st.close();} catch (Exception e){
-//            System.err.println(e.getMessage());
-//        }
     }
 }
