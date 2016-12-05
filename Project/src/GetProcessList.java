@@ -122,9 +122,8 @@ public class GetProcessList {
         return process;
     }
 
-    public void printProcesses() {
-        String[] proc = GetProcessListData();
-        //System.out.println(proc);
+    public void updateProcesses() {
+        GetProcessListData();
         return;
     }
 }
