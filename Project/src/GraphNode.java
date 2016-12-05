@@ -76,8 +76,7 @@ public class GraphNode extends NodeProc{
     }
 
     public int getsize(){
-        int temp = (int)this.size;
-        return temp;
+        return (int)this.size;
     }
 
     public void setSize(){

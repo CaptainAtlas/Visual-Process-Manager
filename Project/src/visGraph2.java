@@ -25,8 +25,8 @@ public class visGraph2 extends NodeProc{
         panel.setLayout(null);
         //ArrayList<GraphNode> nodes = this.myNodes;
         int j = 0;
-        NodeProc tester = new NodeProc(37517, 2f, 3f);
-        NodeProc tester2 = new NodeProc(125, 123f, 213f);
+        NodeProc tester = new NodeProc(37642f, 2f, 3f);
+        NodeProc tester2 = new NodeProc(125f, 123f, 213f);
         ArrayList<GraphNode> newNodes = new ArrayList();
         newNodes.add(new GraphNode(tester));
         newNodes.add(new GraphNode(tester2));
@@ -39,9 +39,11 @@ public class visGraph2 extends NodeProc{
             }
             JButton b = new JButton(String.valueOf(this.nodes.get(i).getProcess().getPid()));
             b.setText(String.valueOf(this.nodes.get(i).getProcess().getPid()));
-            GraphNode graphNode = new GraphNode(this.nodes.get(i));
+            GraphNode graphNode = this.nodes.get(i);
             graphNode.setColor();
             graphNode.setSize();
+
+            System.out.println(graphNode.getProcess().getPid());
             Color btnColor = graphNode.getColor();
             b.setSize(graphNode.getsize(), graphNode.getsize());
 
@@ -64,9 +66,10 @@ public class visGraph2 extends NodeProc{
                 public void actionPerformed(java.awt.event.ActionEvent e) {
                     try {
                         graphNode.signalProcess("kill");
+                        b.setVisible(false);
                     } catch (IOException e1) {
                         e1.printStackTrace();
-                        b.setVisible(false);
+
                     }
                 }
             });

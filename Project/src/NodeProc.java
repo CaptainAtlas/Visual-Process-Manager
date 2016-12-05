@@ -31,6 +31,7 @@ public class NodeProc extends JPanel {
         return;
     }
     public float getRamUsage(){
+
         return this.ramUsage;
     }
     public float getCpuUsage(){
