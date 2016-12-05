@@ -1,22 +1,9 @@
-/* File Organization
-
-1. Imports
-2. GetProcessList -- Generates File of Current running processes
- a. GetProcessListData --- Reads all data using Runtime information
- b. OutProcessListData --- Exports all data gathered using Runtime
-
- */
-
-// 1. Imports
-
 import java.io.*;
 import java.sql.*;
 
 
-// 2. GetProcessList: Gets and exports process information
-
 public class GetProcessList {
-    // a. Reads data using Runtime
+
     private String[] GetProcessListData() {
         Process p;
         Runtime runTime;
@@ -70,8 +57,6 @@ public class GetProcessList {
 
 
                 } catch (NullPointerException e) {
-                   // e.printStackTrace();
-//                    System.err.println("null pointer oh noes!");
                 }
             }
 

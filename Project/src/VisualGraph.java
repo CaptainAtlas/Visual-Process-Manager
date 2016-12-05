@@ -1,8 +1,3 @@
-/**
- * Created by jamesdraper on 11/29/16.
- */
-
-//package com.zetcode;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
