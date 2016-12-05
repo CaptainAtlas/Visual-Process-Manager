@@ -2,11 +2,12 @@
  * Created by DannyBrill on 11/29/16.
  */
 
+import javax.swing.*;
 import java.io.*;
 import java.sql.*;
 import java.util.StringTokenizer;
 
-public class NodeProc {
+public class NodeProc extends JPanel {
     private float pid;
     private float ramUsage;
     private float cpuUsage;
@@ -16,6 +17,7 @@ public class NodeProc {
         this.ramUsage = -1;
     }
     NodeProc(float pid){
+        this.pid = pid;
         this.cpuUsage = getCpuUsage();
         this.ramUsage = getRamUsage();
     }

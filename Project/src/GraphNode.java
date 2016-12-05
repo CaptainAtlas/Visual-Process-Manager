@@ -13,6 +13,7 @@ public class GraphNode extends NodeProc{
     private Color color;
     private float locality;
     private float size;
+
     GraphNode(){
         this.color = new Color(0, 0, 0);
         this.locality = 0;
@@ -49,7 +50,7 @@ public class GraphNode extends NodeProc{
         return;
     }
 
-    public float getSize(){
+    public float getsize(){
         return this.size;
     }
 
