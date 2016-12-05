@@ -27,7 +27,7 @@ class VisualGraph extends NodeProc {
     private void initUI() {
 
         NodeProc myNode = new NodeProc();
-        NodeProc myNode2 = new NodeProc(1, 7.3f, 24.9f); //cpu cuttoff at 25 and 1, ram cuttoff 7 and 1
+        NodeProc myNode2 = new NodeProc(1, 1f, 24.9f); //cpu cuttoff at 25 and 1, ram cuttoff 7 and 1
 
 
 
@@ -79,10 +79,11 @@ class VisualGraph extends NodeProc {
                 ramF = 1f;
             }
             int ram = Math.round(ramF);
-            ram = ram * 15;
+            ram = ram * 40;
             nodeBtn.setSize(ram,ram);
+            //End Button Size
 
-            //Button Color, not fleshed out
+            //Button Color
             float blueF = 0;
             float redF = 0;
 
@@ -109,7 +110,6 @@ class VisualGraph extends NodeProc {
                 blueF = 255;
             }
 
-
             int blue = Math.round(blueF);
             int red = Math.round(redF);
 
@@ -119,7 +119,7 @@ class VisualGraph extends NodeProc {
             nodeBtn.setBackground(btnColor);
             nodeBtn.setOpaque(true);
             nodeBtn.setBorderPainted(false);
-
+            //end of Button Color
 
 
             nodeBtn.setLocation(location, location);
