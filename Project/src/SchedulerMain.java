@@ -1,6 +1,6 @@
 import java.util.Timer;
 
-public class SchedulerMain {
+public class SchedulerMain extends visGraph2 {
     public static void main(String[] args) throws InterruptedException {
         Timer update = new Timer();
         Driver ProcData = new Driver();

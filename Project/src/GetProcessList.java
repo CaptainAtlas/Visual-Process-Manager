@@ -2,7 +2,7 @@ import java.io.*;
 import java.sql.*;
 
 
-public class GetProcessList {
+public class GetProcessList extends visGraph2 {
 
     private String[] GetProcessListData() {
         Process p;

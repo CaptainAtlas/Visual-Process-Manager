@@ -18,8 +18,8 @@ public class NodeProc extends JPanel {
     }
     NodeProc(float pid){
         this.pid = pid;
-        this.cpuUsage = getCpuUsage();
-        this.ramUsage = getRamUsage();
+        this.cpuUsage = setCpuUsage();
+        this.ramUsage = setRamUsage();
     }
     NodeProc(float pid, float ramUsage, float cpuUsage){
         this.pid = pid;
@@ -31,6 +31,12 @@ public class NodeProc extends JPanel {
         return;
     }
     public float getRamUsage(){
+        return this.ramUsage;
+    }
+    public float getCpuUsage(){
+        return this.cpuUsage;
+    }
+    public float setRamUsage(){
         Connection conn = null;
         Statement st = null;
         ResultSet rs = null;
@@ -78,7 +84,7 @@ public class NodeProc extends JPanel {
         }
         return this.ramUsage;
     }
-    public float getCpuUsage(){
+    public float setCpuUsage(){
         Connection conn = null;
         Statement st = null;
         ResultSet rs = null;

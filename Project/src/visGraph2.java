@@ -2,92 +2,102 @@ import oracle.jvm.hotspot.jfr.JFR;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
+import java.util.ArrayList;
 
 
 public class visGraph2 extends NodeProc{
+    private ArrayList<GraphNode> nodes;
 
+    public void setNodes(ArrayList<GraphNode> newNodes){
+        this.nodes = newNodes;
+    }
 
+    public visGraph2(){
+    }
+    public visGraph2(ArrayList<GraphNode> newNodes){
+        this.nodes = newNodes;
+    }
     public visGraph2(JPanel panel, JFrame frame){
         panel.setBounds(800, 800, 200, 100);
         panel.setLayout(null);
-        NodeProc myNode = new NodeProc(1, 24f, .01f);
-        NodeProc myNode2 = new NodeProc(40, 3f, 23f);
-        NodeProc myNode3 = new NodeProc(153, 13f, 3f);
-        NodeProc myNode4 = new NodeProc(9999, 7f, 10f);
-
-        NodeProc[] nodes = {myNode,myNode2, myNode3,myNode4};
-
+        //ArrayList<GraphNode> nodes = this.myNodes;
+        int j = 0;
         //setLayout(new java.awt.GridLayout(4, 4));
-        for (int i = 0; i < 4; ++i) {
-            JButton b = new JButton(String.valueOf(nodes[i].getPid()));
-
-
-            Float ramF = nodes[i].getRamUsage();
-            if (ramF > 7){
-                ramF = 7f;
+        for (int i = 0; i < this.nodes.size(); ++i) {
+            j++;
+            if(j > this.nodes.size()/10){
+                j = 0;
             }
-            if (ramF < 1.5){
-                ramF = 1.5f;
-            }
-            int ram = Math.round(ramF);
-            ram = ram * 40;
-            b.setSize(ram,ram);
-            //Button Color
-            float blueF = 0;
-            float redF = 0;
-            Float cpuF = nodes[i].getCpuUsage();
-            if (cpuF > 25){
-                cpuF = 25f;
-            }
-            if (cpuF < 1){
-                cpuF = 1f;
-            }
-            if (cpuF == 25){
-                redF = cpuF*10;
-            }
-            else if (cpuF < 25 && cpuF >= 5){
-                blueF = 255;
-                redF = 8;
-                redF = redF*cpuF;
-                blueF = blueF/cpuF*5;
-            }
-            else if (cpuF < 5){
-                redF = cpuF*10;
-                blueF = 255;
-            }
-            int blue = Math.round(blueF);
-            int red = Math.round(redF);
-            Color btnColor = new Color(red,0,blue);
+            JButton b = new JButton(String.valueOf(this.nodes.get(i).getPid()));
+            b.setText(String.valueOf(this.nodes.get(i).getPid()));
+            GraphNode graphNode = new GraphNode(this.nodes.get(i));
+            graphNode.setColor();
+            graphNode.setSize();
+            Color btnColor = graphNode.getColor();
+            b.setSize(graphNode.getsize(), graphNode.getsize());
 
             b.setBackground(btnColor);
             b.setOpaque(true);
             b.setBorderPainted(false);
-            b.setLocation(i*125, i*125);
+            b.setLocation(i, j);
+
 
             final JPopupMenu menu = new JPopupMenu("controls");
-            JMenuItem item1 = new JMenuItem("Kill");
-            JMenuItem item2 = new JMenuItem("Quit");
-            JMenuItem item3 = new JMenuItem("Start");
+            JMenuItem kill = new JMenuItem("Kill");
+            JMenuItem quit = new JMenuItem("Quit");
+            JMenuItem start = new JMenuItem("Start");
 
-            menu.add(item1);
-            menu.add(item2);
-            menu.add(item3);
+            menu.add(kill);
+            menu.add(quit);
+            menu.add(start);
 
+            kill.addActionListener(new ActionListener() {
+                public void actionPerformed(java.awt.event.ActionEvent e) {
+                    try {
+                        graphNode.signalProcess("kill");
+                    } catch (IOException e1) {
+                        e1.printStackTrace();
+                    }
+                }
+            });
+            quit.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    try{
+                        graphNode.signalProcess("quit");
+                    } catch (IOException e1) {
+                        e1.printStackTrace();
+                    }
+                }
+            });
+
+            start.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    try{
+                        graphNode.signalProcess("start");
+                    } catch (IOException e1) {
+                        e1.printStackTrace();
+                    }
+                }
+            });
             panel.add(b);
-            NodeProc temp = nodes[i];
+            NodeProc temp = this.nodes.get(i);
             b.addActionListener(new ActionListener() {
                 public void actionPerformed(java.awt.event.ActionEvent e) {
                     menu.show(b, b.getWidth()/2, b.getHeight()/2);
                     System.out.println(temp.getCpuUsage());
                 }
             });
+
         }
         frame.add(panel);
     }
 
-
-    public static void main(String args[]) {
+    public static void makeGraph() {
         JPanel myPanel = new JPanel();
         JFrame myFrame = new JFrame();
         myPanel.setVisible(true);
@@ -101,6 +111,7 @@ public class visGraph2 extends NodeProc{
             myFrame.setDefaultCloseOperation(myFrame.EXIT_ON_CLOSE);
     }
 
-
-
+    public static void main(String argsp[]) throws InterruptedException {
+        makeGraph();
+    }
 }
