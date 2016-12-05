@@ -25,7 +25,8 @@ public class visGraph2 extends NodeProc{
         panel.setLayout(null);
         //ArrayList<GraphNode> nodes = this.myNodes;
         int j = 0;
-//        NodeProc tester = new NodeProc(38007, 2f, 3f);
+        int layer = 0;
+//        NodeProc tester = new NodeProc(38058, 2f, 3f);
 //        NodeProc tester2 = new NodeProc(125f, 123f, 213f);
 //        ArrayList<GraphNode> newNodes = new ArrayList();
 //        newNodes.add(new GraphNode(tester));
@@ -48,7 +49,8 @@ public class visGraph2 extends NodeProc{
             b.setBackground(btnColor);
             b.setOpaque(true);
             b.setBorderPainted(false);
-            System.out.println(j/32);
+           // System.out.println(j/32);
+
             b.setLocation((i%32)*25, (j/32)*100);
 
 

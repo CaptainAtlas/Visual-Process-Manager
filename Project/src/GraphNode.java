@@ -8,7 +8,7 @@ import java.awt.*;
 import java.io.*;
 import java.util.StringTokenizer;
 
-public class GraphNode extends NodeProc{
+public class GraphNode extends NodeProc implements Comparable<GraphNode>{
     private NodeProc proc;
     private Color color;
     private float locality;
@@ -111,5 +111,15 @@ public class GraphNode extends NodeProc{
         return true;
     }
 
+    @Override
+    public int compareTo(GraphNode otherNode) {
+        if((int)this.getProcess().getRamUsage() > (int)otherNode.getProcess().getRamUsage()){
+            return -1;
+        }
+        else if((int)this.getProcess().getRamUsage() < (int)otherNode.getProcess().getRamUsage()){
+            return 1;
+        }
+        return 0;
+    }
 }
 

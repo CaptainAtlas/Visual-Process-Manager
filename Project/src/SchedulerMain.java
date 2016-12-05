@@ -6,7 +6,7 @@ public class SchedulerMain extends visGraph2 {
         Driver ProcData = new Driver();
         update.schedule(ProcData, 0, 10000);
 
-        for (int i = 0; i <= 5; i++){
+        for (int i = 0; i <= 3; i++){
             System.out.println("Updating...");
             Thread.sleep(11000);
             if (i == 5){
