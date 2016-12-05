@@ -26,8 +26,8 @@ class VisualGraph extends NodeProc {
 
     private void initUI() {
 
-        NodeProc myNode = new NodeProc();
-        NodeProc myNode2 = new NodeProc(1, 1f, 24.9f); //cpu cuttoff at 25 and 1, ram cuttoff 7 and 1
+        //NodeProc myNode = new NodeProc();
+        NodeProc myNode2 = new NodeProc(9999, 3f, 23); //cpu cuttoff at 25 and 1, ram cuttoff 7 and 1
 
 
 
@@ -51,7 +51,7 @@ class VisualGraph extends NodeProc {
 
         int location = 400;
 
-        for(int i = 0; i < 2/*array.length*/; i++){
+        for(int i = 0; i < 1/*array.length*/; i++){
 
             //panel.add(new JButton("test2"));
             //this.guiFrame.setLocation(10,10);
@@ -69,14 +69,15 @@ class VisualGraph extends NodeProc {
             int pidI = Math.round(pidF);
             String pid = Integer.toString(pidI);
             nodeBtn.setText(pid);
+            //End Button Name
 
             //Button Size from ram
             Float ramF = myNode2.getRamUsage();
             if (ramF > 7){
                 ramF = 7f;
             }
-            if (ramF < 1){
-                ramF = 1f;
+            if (ramF < 1.5){
+                ramF = 1.5f;
             }
             int ram = Math.round(ramF);
             ram = ram * 40;
@@ -119,9 +120,9 @@ class VisualGraph extends NodeProc {
             nodeBtn.setBackground(btnColor);
             nodeBtn.setOpaque(true);
             nodeBtn.setBorderPainted(false);
-            //end of Button Color
+            //End Button Color
 
-
+            //Location
             nodeBtn.setLocation(location, location);
             location = location - 100;
 
