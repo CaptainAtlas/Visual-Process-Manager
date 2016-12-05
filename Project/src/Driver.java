@@ -27,9 +27,11 @@ public class Driver extends TimerTask {
             e.printStackTrace();
         }
         for(int i = 0; i < nodeProcs.size(); i++){
-//            System.out.println(nodeProcs.get(i).getPid());
+//            System.out.println(nodeProcs.get(i).getRamUsage());
             graphNodes.add(new GraphNode(nodeProcs.get(i)));
+            System.out.println(graphNodes.get(i).getProcess().getPid());
         }
+
         visGraph2 myGraph = new visGraph2(graphNodes);
         myGraph.setNodes(graphNodes);
         myGraph.makeGraph();
