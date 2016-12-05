@@ -27,7 +27,7 @@ class VisualGraph extends NodeProc {
     private void initUI() {
 
         NodeProc myNode = new NodeProc();
-        NodeProc myNode2 = new NodeProc(1, 7.3f, 88.8f); //cpu cuttoff at 25 and 1, ram cuttoff 7 and 1
+        NodeProc myNode2 = new NodeProc(1, 7.3f, 24.9f); //cpu cuttoff at 25 and 1, ram cuttoff 7 and 1
 
 
 
@@ -83,8 +83,8 @@ class VisualGraph extends NodeProc {
             nodeBtn.setSize(ram,ram);
 
             //Button Color, not fleshed out
-            float blueF = 10;
-            float redF = 10;
+            float blueF = 0;
+            float redF = 0;
 
             Float cpuF = myNode2.getCpuUsage();
 
@@ -96,7 +96,17 @@ class VisualGraph extends NodeProc {
             }
 
             if (cpuF == 25){
-                redF = redF * cpuF;
+                redF = cpuF*10;
+            }
+            else if (cpuF < 25 && cpuF >= 5){
+                blueF = 255;
+                redF = 8;
+                redF = redF*cpuF;
+                blueF = blueF/cpuF*5;
+            }
+            else if (cpuF < 5){
+                redF = cpuF*10;
+                blueF = 255;
             }
 
 
