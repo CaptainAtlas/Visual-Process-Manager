@@ -25,32 +25,31 @@ public class visGraph2 extends NodeProc{
         panel.setLayout(null);
         //ArrayList<GraphNode> nodes = this.myNodes;
         int j = 0;
-        NodeProc tester = new NodeProc(37642f, 2f, 3f);
-        NodeProc tester2 = new NodeProc(125f, 123f, 213f);
-        ArrayList<GraphNode> newNodes = new ArrayList();
-        newNodes.add(new GraphNode(tester));
-        newNodes.add(new GraphNode(tester2));
-        this.nodes = newNodes;
+//        NodeProc tester = new NodeProc(38007, 2f, 3f);
+//        NodeProc tester2 = new NodeProc(125f, 123f, 213f);
+//        ArrayList<GraphNode> newNodes = new ArrayList();
+//        newNodes.add(new GraphNode(tester));
+//        newNodes.add(new GraphNode(tester2));
+//        this.nodes = newNodes;
         //setLayout(new java.awt.GridLayout(4, 4));
         for (int i = 0; i < this.nodes.size(); ++i) {
             j++;
-            if(j > this.nodes.size()/10){
-                j = 0;
-            }
+
             JButton b = new JButton(String.valueOf(this.nodes.get(i).getProcess().getPid()));
-            b.setText(String.valueOf(this.nodes.get(i).getProcess().getPid()));
+            b.setText(String.valueOf((int)this.nodes.get(i).getProcess().getPid()));
             GraphNode graphNode = this.nodes.get(i);
             graphNode.setColor();
             graphNode.setSize();
 
-            System.out.println(graphNode.getProcess().getPid());
+            //System.out.println(graphNode.getProcess().getPid());
             Color btnColor = graphNode.getColor();
             b.setSize(graphNode.getsize(), graphNode.getsize());
 
             b.setBackground(btnColor);
             b.setOpaque(true);
             b.setBorderPainted(false);
-            b.setLocation(i*125, j*125);
+            System.out.println(j/32);
+            b.setLocation((i%32)*25, (j/32)*100);
 
 
             final JPopupMenu menu = new JPopupMenu("controls");
@@ -95,7 +94,7 @@ public class visGraph2 extends NodeProc{
                 }
             });
             panel.add(b);
-            NodeProc temp = this.nodes.get(i);
+            NodeProc temp = this.nodes.get(i).getProcess();
             b.addActionListener(new ActionListener() {
                 public void actionPerformed(java.awt.event.ActionEvent e) {
                     menu.show(b, b.getWidth()/2, b.getHeight()/2);

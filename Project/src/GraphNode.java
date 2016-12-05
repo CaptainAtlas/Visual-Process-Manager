@@ -84,8 +84,8 @@ public class GraphNode extends NodeProc{
         if (ram > 7){
             ram = 7f;
         }
-        if (ram < 2){
-            ram = 2f;
+        if (ram < .5){
+            ram = .5f;
         }
         ram = ram * 40;
         this.size = (int)ram;
