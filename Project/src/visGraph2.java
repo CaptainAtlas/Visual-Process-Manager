@@ -85,21 +85,21 @@ public class visGraph2 extends NodeProc{
                     double ycord = Math.sin(theta);
                     System.out.print(xcord + " " + ycord);
                     System.out.println(theta + " " + xcord + " " + ycord);
-                    b.setLocation(400 - (int)(1.5 * xcord * this.nodes.get(1).getsize()), 350 - (int)(1.5 * ycord * this.nodes.get(1).getsize()));
+                    b.setLocation(400 - (int)(2 * xcord * this.nodes.get(1).getsize()), 350 - (int)(1.5 * ycord * this.nodes.get(1).getsize()));
                     break;
                 case '2':
                     System.out.println("case 2");
                     theta = 11.25 * (i%32);
                     xcord = Math.cos(theta);
                     ycord = Math.sin(theta);
-                    b.setLocation(400 - (int)(2.5 * xcord * this.nodes.get(1).getsize()), 350 - (int)(2.5 * ycord * this.nodes.get(1).getsize()));
+                    b.setLocation(400 - (int)(3 * xcord * this.nodes.get(1).getsize()), 350 - (int)(2.5 * ycord * this.nodes.get(1).getsize()));
                     break;
                 case '3':
                     System.out.println("case 3");
                     theta = 4.8 * (i%75);
                     xcord = Math.cos(theta);
                     ycord = Math.sin(theta);
-                    b.setLocation(400 - (int)(3.25 * xcord * this.nodes.get(1).getsize()), 350 - (int)(3.25 * ycord * this.nodes.get(1).getsize()));
+                    b.setLocation(400 - (int)(3.5 * xcord * this.nodes.get(1).getsize()), 350 - (int)(3.25 * ycord * this.nodes.get(1).getsize()));
                     break;
                 case '4':
                     System.out.println("case 4");
@@ -112,7 +112,7 @@ public class visGraph2 extends NodeProc{
                     theta = i%360;
                     xcord = Math.cos(theta);
                     ycord = Math.sin(theta);
-                    b.setLocation(400 - (int)(4.75 * xcord * this.nodes.get(1).getsize()), 350 - (int)(4.75 * ycord * this.nodes.get(1).getsize()));
+                    b.setLocation(400 - (int)(4.5 * xcord * this.nodes.get(1).getsize()), 350 - (int)(4.75 * ycord * this.nodes.get(1).getsize()));
                     break;
                 default:
                     break;
