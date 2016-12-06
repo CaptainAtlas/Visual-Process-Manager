@@ -7,10 +7,11 @@ import java.util.Collections;
 import java.util.TimerTask;
 
 public class Driver extends TimerTask {
-    ArrayList<NodeProc> nodeProcs = new ArrayList();
-    ArrayList<GraphNode> graphNodes = new ArrayList();
+
 
     public void run(){
+        ArrayList<NodeProc> nodeProcs = new ArrayList();
+        ArrayList<GraphNode> graphNodes = new ArrayList();
         GetProcessList processes = new GetProcessList();
         processes.updateProcesses();
         DBConnection DBconn = new DBConnection();
@@ -30,14 +31,14 @@ public class Driver extends TimerTask {
         for(int i = 0; i < nodeProcs.size(); i++){
 //            System.out.println(nodeProcs.get(i).getRamUsage());
             graphNodes.add(new GraphNode(nodeProcs.get(i)));
-            System.out.print(graphNodes.get(i).getsize() + " ");
+//            System.out.print(graphNodes.get(i).getsize() + " ");
             //System.out.println(graphNodes.get(i).getProcess().getPid());
         }
-        System.out.println("***");
+//        System.out.println("***");
         Collections.sort(graphNodes);
-        for(int i = 0; i < nodeProcs.size(); i++){
-            System.out.print(graphNodes.get(i).getsize() + " ");
-        }
+//        for(int i = 0; i < nodeProcs.size(); i++){
+//            System.out.print(graphNodes.get(i).getsize() + " ");
+//        }
         visGraph2 myGraph = new visGraph2(graphNodes);
         myGraph.setNodes(graphNodes);
         myGraph.makeGraph();

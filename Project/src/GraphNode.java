@@ -43,27 +43,18 @@ public class GraphNode extends NodeProc implements Comparable<GraphNode>{
 
     public void setColor(){
         float cpu = proc.getCpuUsage();
-        float red = 0;
-        float blue = 0;
-        if(cpu > 25){
+
+        if(cpu >= 25){
             cpu = 25;
         }
-        if(cpu < 1){
+        else if(cpu < 1){
             cpu = 1;
         }
-        if(cpu == 25){
-            red = cpu*10;
-        }
 
-        else if(cpu < 25 && cpu >= 5){
-            red = 8 * cpu;
-            blue = 255/(cpu * 5);
-        }
-        else{
-            red = cpu*10;
-            blue = 255;
-        }
-        this.color = new Color((int)Math.round(red), 0, (int)Math.round(blue));
+        float red = cpu * 8;
+        float blue = 255 / (cpu);
+
+        this.color = new Color((int) red, (int) blue, 0);
         return;
     }
     public float getLocality(){
@@ -82,12 +73,12 @@ public class GraphNode extends NodeProc implements Comparable<GraphNode>{
     public void setSize(){
         float ram = proc.getRamUsage();
         if (ram > 7){
-            ram = 7f;
+            ram = 4f;
         }
         if (ram < .5){
-            ram = .5f;
+            ram = 1f;
         }
-        ram = ram * 40;
+        ram = ram * 30;
         this.size = (int)ram;
         return;
     }
