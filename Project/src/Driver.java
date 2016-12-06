@@ -1,3 +1,4 @@
+import javax.swing.*;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -39,9 +40,11 @@ public class Driver extends TimerTask {
 //        for(int i = 0; i < nodeProcs.size(); i++){
 //            System.out.print(graphNodes.get(i).getsize() + " ");
 //        }
+        JPanel newPanel = new JPanel();
+        JFrame newFrame = new JFrame();
         visGraph2 myGraph = new visGraph2(graphNodes);
         myGraph.setNodes(graphNodes);
-        myGraph.makeGraph();
+        myGraph.makeGraph(newPanel, newFrame);
     }
 //    public static void main (String[]args){
 //

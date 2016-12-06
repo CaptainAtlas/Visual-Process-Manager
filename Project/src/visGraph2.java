@@ -174,10 +174,8 @@ public class visGraph2 extends NodeProc{
         frame.add(panel);
     }
 
-    public static void makeGraph() {
-        JPanel myPanel = new JPanel();
-        JFrame myFrame = new JFrame();
-        myPanel.setVisible(true);
+    public static void makeGraph(JPanel myPanel, JFrame myFrame) {
+            myPanel.setVisible(true);
             myFrame.setTitle("Visual Process Manager");
             myFrame.setSize(900, 900);
             myFrame.add(new visGraph2(nodes, myPanel, myFrame));
@@ -185,9 +183,9 @@ public class visGraph2 extends NodeProc{
             //myFrame.setLocationRelativeTo(null);
             myFrame.setVisible(true);
             myFrame.setDefaultCloseOperation(myFrame.EXIT_ON_CLOSE);
+
     }
 
     public static void main(String argsp[]) throws InterruptedException {
-        makeGraph();
     }
 }
